@@ -1,0 +1,30 @@
+- model: auth.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$320000$Z00Zz1AvBnqHyPMnyCgvz1$lwsEhqX2u7Eaq3b6j5V1EqqgiZn0gGwhJMP3b8NoLVY=
+    last_login: null
+    is_superuser: true
+    username: olix
+    first_name: ''
+    last_name: ''
+    email: oliver.parker.morgan@gmail.com
+    is_staff: true
+    is_active: true
+    date_joined: 2022-02-17 07:49:18.964725+00:00
+    groups: []
+    user_permissions: []
+- model: auth.user
+  pk: 2
+  fields:
+    password: pbkdf2_sha256$320000$FS6picZA4CGBpphAP9tffL$on1ZbZAFAY58kH1q9eOgruGeRjJCyzIoDDehcaeYJSI=
+    last_login: 2022-02-24 07:51:47.062877+00:00
+    is_superuser: true
+    username: admin
+    first_name: ''
+    last_name: ''
+    email: admin@admin.com
+    is_staff: true
+    is_active: true
+    date_joined: 2022-02-24 07:51:28.525556+00:00
+    groups: []
+    user_permissions: []

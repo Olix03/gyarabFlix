@@ -18,6 +18,9 @@ from django.urls import path
 from Gaflix.views import *
 
 urlpatterns = [
-    path('intro', intro),
+    path('', intro),
+    path('list_movies', list_movies),
+    path('list_actors', list_actors),
     path('admin/', admin.site.urls),
+    path('category/<str:category>', categories)
 ]

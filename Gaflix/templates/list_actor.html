@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link href="{% static "css/movie.css" %}" rel="stylesheet">
+{% block title %}
+    <title>Yay, list your movies on Gaflix</title>
+{% endblock %}
+{% block base %}
+    <main role="main">
+     <div class="container marketing">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+    <div class="container">
+        {% for actor in actors %}
+
+	<div class="movie-card">
+		<div class="movie-header manOfSteel">
+			<div class="header-icon-container">
+				<a href="#">
+					<i class="material-icons header-icon"></i>
+				</a>
+			</div>
+		</div><!--movie-header-->
+		<div class="movie-content">
+			<div class="movie-content-header">
+				<a href="#">
+					<h3 class="movie-title">{{ actor.name }}</h3>
+				</a>
+				<div class="imax-logo"></div>
+			</div>
+			<div class="movie-info">
+				<div class="info-section">
+					<label>birthdate: {{ actor.birthdate }}</label>
+					<span></span>
+				</div><!--date,time-->
+				<div class="info-section">
+					<label>Description: </label>
+
+					<span>{{ movie.description }}</span>
+				</div><!--screen-->
+
+				<div class="info-section">
+					{% if actor.sex == 'Man' %}gender: 👨
+                    {% elif actor == 'Women' %}gender: 👩
+                    {% else %}gender: 👤
+                    {% endif %}
+				</div><!--seat-->
+			</div>
+		</div><!--movie-content-->
+	</div><!--movie-card-->
+        {% endfor %}
+        </div>
+
+
+
+</div><!--container-->
+    </div>
+     </div>
+    </main>
+
+{% endblock %}

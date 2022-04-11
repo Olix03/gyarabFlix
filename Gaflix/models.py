@@ -1,6 +1,25 @@
 from django.db import models
 import typing
 
+from django.utils.datetime_safe import datetime
+
+
+class Actor(models.Model):
+    name = models.CharField(max_length=20, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    sex = models.CharField(null=True, blank=True, max_length=6, choices=[("Man", "Man"),
+                                                                         ("Woman", "Woman"),
+                                                                         ("Other", "Other"),
+                                                                         ])
+    birthdate = models.DateTimeField(default=datetime.now)
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
 
 # Create your models here.
 class Movie(models.Model):
@@ -13,14 +32,8 @@ class Movie(models.Model):
                                                                       (5, "☆☆☆☆☆"), ])
     ratingPercentage = models.FloatField(null=True, blank=True)
     director = models.ForeignKey('Director', null=True, blank=True, on_delete=models.CASCADE)
-    actor = models.ManyToManyField('Actor', blank=True)
-
-    def __str__(self):
-        return self.title
-
-
-class Category(models.Model):
-    title = models.CharField(max_length=255, null=True, blank=True)
+    actors = models.ManyToManyField('Actor', blank=True)
+    category = models.ForeignKey("Category",on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -33,9 +46,14 @@ class User(models.Model):
         return self.username
 
 
-class Actor(models.Model):
-    name = models.CharField(max_length=20, null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+SEX_MAN = "Male"
+SEX_WOMEN = "Women"
+SEX_OTHER = "Other"
+
+SEX_CHOICES = [(SEX_MAN, "Man"),
+               (SEX_WOMEN, "Woman"),
+               (SEX_OTHER, "Other"),
+               ]
 
 
 class Person(models.Model):
